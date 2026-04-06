@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saloni — Welcome to Noida</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>✈️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
   <style>
@@ -113,7 +114,8 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: clamp(16px, 3vw, 26px);
-      color: rgba(255,255,255,0.65);
+      color: #ffe8b0;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6);
       margin-top: 18px;
       opacity: 0;
       transform: translateY(20px);
@@ -131,11 +133,21 @@
     }
 
     #sub {
-      font-size: 13px;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.35);
-      margin-top: 40px;
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
+      color: #d8b4fe;
+      background: rgba(109, 40, 217, 0.35);
+      border: 1px solid rgba(167, 139, 250, 0.45);
+      backdrop-filter: blur(8px);
+      padding: 8px 22px;
+      border-radius: 100px;
+      white-space: nowrap;
+      z-index: 25;
       opacity: 0;
     }
 
@@ -496,8 +508,9 @@
   </div>
   <div id="city-label">NOIDA</div>
   <div id="tagline">The city that waited, just for you.</div>
-  <div id="sub">April 2026 &nbsp;·&nbsp; Sector Unknown &nbsp;·&nbsp; ∞ adventures ahead</div>
 </div>
+
+<div id="sub">April 2026 &nbsp;·&nbsp; Sector 62 &nbsp;·&nbsp; ∞ adventures ahead</div>
 
 <button id="replay-btn">↺ Again</button>
 
@@ -538,12 +551,14 @@ function sequence(){
   const btn=$('replay-btn');
 
   // Reset
-  [moon,city,spotlight,badge,name,cityLabel,tagline,sub,plane,btn].forEach(el=>{
+  [moon,city,spotlight,badge,name,cityLabel,tagline,plane,btn].forEach(el=>{
     if(!el) return;
     el.style.transition='none';
     el.style.opacity='0';
     el.style.transform='';
   });
+  sub.style.transition='none';
+  sub.style.opacity='0';
   name.style.transform='translateY(40px) scale(0.95)';
   badge.style.transform='translateY(20px)';
   cityLabel.style.transform='translateY(20px)';
